@@ -46,7 +46,7 @@ curl -fsSL "$BASE_URL/install-gait.sh" -o .devcontainer/install-gait.sh
 curl -fsSL "$BASE_URL/start-gait-server.sh" -o .devcontainer/start-gait-server.sh
 curl -fsSL "$BASE_URL/.env.example" -o .devcontainer/.env.example
 curl -fsSL "$BASE_URL/.gitignore" -o .devcontainer/.gitignore
-curl -fsSL "$BASE_URL/README.md" -o .devcontainer/README-GAIT.md
+# curl -fsSL "$BASE_URL/README.md" -o .devcontainer/README-GAIT.md
 
 # Make scripts executable
 chmod +x .devcontainer/build.sh
@@ -91,7 +91,7 @@ This project uses the GAIT devcontainer for development. GAIT is pre-installed a
    gait propose
    ```
 
-For full documentation, see `.devcontainer/README-GAIT.md`
+# For full documentation, see `.devcontainer/README-GAIT.md`
 EOF
 
 echo ""

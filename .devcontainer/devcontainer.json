@@ -1,0 +1,68 @@
+{
+  "name": "GAIT Development Environment",
+  "image": "gait-devcontainer:latest",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-typescript-next",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "dbaeumer.vscode-eslint",
+        "ms-vscode.vscode-json"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "typescript.preferences.importModuleSpecifier": "relative",
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": true
+        }
+      }
+    }
+  },
+  "forwardPorts": [3000, 3001, 5173, 8080, 8000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Next.js Dev Server",
+      "onAutoForward": "notify"
+    },
+    "3001": {
+      "label": "API Server",
+      "onAutoForward": "notify"
+    },
+    "5173": {
+      "label": "Vite Dev Server",
+      "onAutoForward": "notify"
+    },
+    "8080": {
+      "label": "Alternative Server",
+      "onAutoForward": "silent"
+    },
+    "8000": {
+      "label": "Python Server",
+      "onAutoForward": "silent"
+    }
+  },
+  "postCreateCommand": "bash ./.devcontainer/install-gait.sh",
+  "postStartCommand": "echo '🎉 GAIT Development Environment Ready!' && echo '' && echo '📡 To start GAIT web server (accessible from other machines):' && echo '   start-gait-server' && echo '' && echo '🔧 Or use GAIT CLI:' && echo '   gait --help' && echo ''",
+  "workspaceFolder": "/workspaces/project",
+  "containerEnv": {
+    "NODE_ENV": "development",
+    "GAIT_HOME": "/opt/gait",
+    "HOSTNAME": "0.0.0.0",
+    "PORT": "3000",
+    "GAIT_MODE": "production"
+  },
+  "remoteUser": "node",
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspaces/project,type=bind,consistency=cached"
+  ],
+  "runArgs": [
+    "--init",
+    "--cap-add=SYS_PTRACE",
+    "--security-opt",
+    "seccomp=unconfined"
+  ],
+  "features": {}
+}

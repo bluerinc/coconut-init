@@ -1,0 +1,38 @@
+# Environment files with sensitive data
+.env
+.env.local
+.env.*.local
+
+# Temporary token files
+.github_token_temp
+*.token
+*.key
+
+# Build artifacts
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# Docker build cache
+.dockerignore.local
+
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Test files
+test-*.sh
+*.test.json
